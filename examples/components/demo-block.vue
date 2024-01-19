@@ -11,8 +11,8 @@
       <div class="description" v-if="$slots.default">
         <slot></slot>
       </div>
-      <div class="highlight">
-        <slot name="highlight"></slot>
+      <div class="highlight" ref="highlight">
+        <slot name="highlight" ></slot>
       </div>
     </div>
     <div
@@ -33,7 +33,7 @@
             size="small"
             type="text"
             class="control-button"
-            @click.stop="goCodepen">
+            @click.stop="goCopy">
             {{ langConfig['button-text'] }}
           </el-button>
         </transition>
@@ -202,6 +202,27 @@
     },
 
     methods: {
+      //复制
+      goCopy(){
+
+        if (navigator.clipboard) {
+         // 支持 Clipboard API
+          console.log(this.$refs.highlight);
+          const textToCopy = this.$refs.highlight.innerText;
+          navigator.clipboard.writeText(textToCopy)
+            .then(() => {
+              console.log('文本已成功复制到剪贴板');
+            })
+            .catch(error => {
+              console.error('写入剪贴板时发生错误:', error);
+            });
+
+        } else {
+        // 不支持 Clipboard API
+        }
+
+      },
+      // 在线运行
       goCodepen() {
         // since 2.6.2 use code rather than jsfiddle https://blog.codepen.io/documentation/api/prefill/
         const { script, html, style } = this.codepen;

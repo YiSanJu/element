@@ -42,7 +42,7 @@ module.exports = {
         loader: 'babel-loader'
       },
       {
-        test: /\.vue$/,
+        test: /\.vue$/, /* 对vue文件进行loader处理*/
         loader: 'vue-loader',
         options: {
           compilerOptions: {

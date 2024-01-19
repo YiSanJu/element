@@ -28,7 +28,8 @@
     "lint": "eslint src/**/* test/**/* packages/**/* build/**/* --quiet",
     "pub": "npm run bootstrap && sh build/git-release.sh && sh build/release.sh && node build/bin/gen-indices.js",
     "test": "npm run lint && npm run build:theme && cross-env CI_ENV=/dev/ BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
-    "test:watch": "npm run build:theme && cross-env BABEL_ENV=test karma start test/unit/karma.conf.js"
+    "test:watch": "npm run build:theme && cross-env BABEL_ENV=test karma start test/unit/karma.conf.js",
+    "convert-md-to-vue": "node build/bin/md-to-vue-converter.js"
   },
   "faas": [
     {
@@ -75,6 +76,7 @@
   "devDependencies": {
     "@vue/component-compiler-utils": "^2.6.0",
     "algoliasearch": "^3.24.5",
+    "markdown-to-vue-loader": "^2.0.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
