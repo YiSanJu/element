@@ -202,11 +202,11 @@
     },
 
     methods: {
-      //复制
-      goCopy(){
+      //  复制
+      goCopy() {
 
         if (navigator.clipboard) {
-         // 支持 Clipboard API
+          // 支持 Clipboard API
           console.log(this.$refs.highlight);
           const textToCopy = this.$refs.highlight.innerText;
           navigator.clipboard.writeText(textToCopy)
